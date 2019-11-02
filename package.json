@@ -1,0 +1,25 @@
+{
+  "name": "text.js",
+  "version": "1.0.0",
+  "description": "It is a very simple way to translate texts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dev-intellisoft/text.js.git"
+  },
+  "keywords": [
+    "text.js",
+    "translator",
+    "node",
+    "js"
+  ],
+  "author": "Wellington Cunha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dev-intellisoft/text.js/issues"
+  },
+  "homepage": "https://github.com/dev-intellisoft/text.js#readme"
+}
