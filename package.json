@@ -1,6 +1,6 @@
 {
-  "name": "text.js",
-  "version": "1.0.0",
+  "name": "@dev-intellisoft/text.js",
+  "version": "1.0.2",
   "description": "It is a very simple way to translate texts",
   "main": "index.js",
   "scripts": {
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/dev-intellisoft/text.js/issues"
   },
-  "homepage": "https://github.com/dev-intellisoft/text.js#readme"
+  "homepage": "https://github.com/dev-intellisoft/text.js#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
 }
