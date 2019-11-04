@@ -28,24 +28,36 @@ class Textjs
         let dir = path.dirname(require.main.filename);
         dir = `${dir}/${this.getDirectory()}`
 
-        if ( !fs.existsSync(dir) )
-            return console.error(`Directory '${dir}' not found  on the root of your project!`)
-        dir = `${dir}/${locale || this.getLocale()}`
+        if ( fs.existsSync(dir) )
+        {
+            dir = `${dir}/${locale || this.getLocale()}`
+            if ( fs.existsSync(dir) )
+            {
+                dir = `${dir}/${this.getFile()}.json`
+                if ( fs.existsSync(dir) )
+                {
+                    return require(dir)
+                }
+                else
+                {
+                    console.error(`Directory no found '${dir}' in your project!`)
+                }
+            }
+            else
+            {
+                console.error(`Directory '${dir}' not found in your project!`)
+            }
 
-        if ( !fs.existsSync(dir) )
-            return console.error(`Directory '${dir}' not found in your project!`)
-
-        dir = `${dir}/${this.getFile()}.json`
-        if ( !fs.existsSync(dir) )
-            return console.error(`Directory no found '${dir}' in your project!`)
-
-        return require(dir)
-
+        }
+        else
+        {
+            console.error(`Directory '${dir}' not found  on the root of your project!`)
+        }
     }
 
     t = ( text, arr = {}, locale = null ) =>
     {
-        const translator = this.load(locale)
+        const translator = this.load(locale) || {}
 
         text = translator[text] || text
 
