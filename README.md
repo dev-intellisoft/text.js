@@ -1,5 +1,11 @@
 # text.js
-It is a very simple way to translate texts
+It is a very simple way to translate texts.
+
+It was created by the need I had to translate text by just type them directly without creating 
+key with strange names like "lbl_username", "txt_username" or something like that.
+
+I really get pain when I need to create keys. 
+
 
 * INSTALLATION
 
