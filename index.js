@@ -5,7 +5,7 @@ class Textjs
 {
     constructor()
     {
-        this.locale = `en_US`
+        this.locale = Intl.DateTimeFormat().resolvedOptions().locale.replace(`-`, `_`)
         this.directory = `locale`
         this.file = `main`
 
