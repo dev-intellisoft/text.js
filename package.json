@@ -1,6 +1,6 @@
 {
   "name": "@dev-intellisoft/text.js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "It is a very simple way to translate texts",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,11 @@
     "node",
     "js"
   ],
-  "author": "Wellington Cunha",
+  "author":{
+    "name":"Wellington Cunha",
+    "email":"wellington@programer.com.br",
+    "url":"https://www.programer.com.br/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dev-intellisoft/text.js/issues"
