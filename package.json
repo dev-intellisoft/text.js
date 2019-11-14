@@ -1,8 +1,11 @@
 {
   "name": "@dev-intellisoft/text.js",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "It is a very simple way to translate texts",
   "main": "index.js",
+  "bin": {
+    "text.js": "bin/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +30,19 @@
   },
   "homepage": "https://github.com/dev-intellisoft/text.js#readme",
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
   }
 }

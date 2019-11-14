@@ -1,39 +1,27 @@
 const fs = require('fs')
 const path = require('path');
 
-class Textjs
+var locale = new Intl.DateTimeFormat().resolvedOptions().locale.replace(`-`, `_`)
+var directory = `locales`
+var file = `main`
+
+const setLocale = ( l ) =>  locale = l
+const setDirectory = ( d ) => directory = d
+const setFile = ( f ) => file = f
+
+const load = ( my_locale ) =>
 {
-    constructor()
-    {
-        this.locale = Intl.DateTimeFormat().resolvedOptions().locale.replace(`-`, `_`)
-        this.directory = `locales`
-        this.file = `main`
-
-    }
-
-    setDirectory = ( dir_name ) => this.directory = dir_name
-
-    setFile = ( file_name ) => this.file = file_name
-
-    setLocale = ( locale ) => this.locale = locale
-
-    getDirectory = () => this.directory
-
-    getFile = () => this.file
-
-    getLocale = () => this.locale
-
-    load = ( locale = null ) =>
+    try
     {
         let dir = path.dirname(require.main.filename);
-        dir = `${dir}/${this.getDirectory()}`
+        dir = `${dir}/${getDirectory()}`
 
         if ( fs.existsSync(dir) )
         {
-            dir = `${dir}/${locale || this.getLocale()}`
+            dir = `${dir}/${my_locale || getLocale()}`
             if ( fs.existsSync(dir) )
             {
-                dir = `${dir}/${this.getFile()}.json`
+                dir = `${dir}/${getFile()}.json`
                 if ( fs.existsSync(dir) )
                 {
                     return require(dir)
@@ -54,18 +42,29 @@ class Textjs
             console.error(`Directory '${dir}' not found  on the root of your project!`)
         }
     }
-
-    t = ( text, arr = {}, locale = null ) =>
+    catch (e)
     {
-        const translator = this.load(locale) || {}
-
-        text = translator[text] || text
-
-        for ( let key in arr )
-            text = text.replace(`{${key}}`, arr[key])
-
-        return text
+        const translations = require('../locales/index')
+        return translations[`${my_locale || getLocale()}_${getFile()}`] || {}
     }
 }
 
-module.exports = new Textjs()
+const getDirectory = () => directory
+const getFile = () => file
+const getLocale = () => locale
+
+const t = ( text, arr = {}, locale = null ) =>
+{
+    const translator = load(locale)
+
+    text = translator[text] || text
+
+    for ( let key in arr )
+        text = text.replace(`{${key}}`, arr[key])
+
+    return text
+}
+
+module.exports = {
+    t, setLocale, setDirectory, setFile, getDirectory, getFile, getLocale
+}
