@@ -30,4 +30,5 @@ glob('locales/**/*.json', {}, (err, files)=>
     {
         if(err) return console.log(err)
     })
+    console.log(str)
 })
