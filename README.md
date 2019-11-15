@@ -6,6 +6,9 @@ key with strange names like "lbl_username", "txt_username" or something like tha
 
 I really get pain when I need to create keys. 
 
+## * Discontinued
+Hello guys this module is discontinued now it was changed to 'languee'
+https://www.npmjs.com/package/languee
 
 * INSTALLATION
 
